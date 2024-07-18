@@ -793,36 +793,6 @@ border-radius:8px;
 padding:3px;
 </string>
                           </property>
-                          <item>
-                           <property name="text">
-                            <string/>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>FDM</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>CFF</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>SLS</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>SLA</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>DLP</string>
-                           </property>
-                          </item>
                          </widget>
                         </item>
                        </layout>

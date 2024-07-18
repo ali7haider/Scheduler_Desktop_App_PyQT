@@ -11,19 +11,11 @@ class LoginWindow(QMainWindow, Ui_MainWindow):
         super(LoginWindow, self).__init__()
         self.setupUi(self)
         self.db_manager = DatabaseManager()
-        self.db_manager.create_database()
+        self.db_manager.create_tables()
         # self.insert_dummy_data()  # Insert dummy data
         # Set the stylesheet for the btnOK button
         
         self.btnOK.clicked.connect(self.loginAuthentication)
-
-
-
-    def insert_dummy_data(self):
-        self.db_manager.insert_dummy_user('user1@example.com', 'password1')
-        self.db_manager.insert_dummy_user('user2@example.com', 'password2')
-
-  
 
     def loginAuthentication(self):
         mail = self.txtMail.text()

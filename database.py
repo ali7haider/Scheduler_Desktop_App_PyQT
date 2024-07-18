@@ -3,12 +3,13 @@ import sqlite3
 class DatabaseManager:
     def __init__(self, db_name='DB.db'):
         self.db_name = db_name
-        self.create_database()
+        self.create_tables()
 
-    def create_database(self):
+    def create_tables(self):
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
 
+        # Create the Users table if it doesn't exist
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS Users (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,11 +19,26 @@ class DatabaseManager:
             )
         ''')
 
+        # Create the Machines table
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS Machines (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 name TEXT,
                 technology TEXT
+            )
+        ''')
+
+        # Create the Projects table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS Projects (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                quote_number TEXT,
+                machine_id INTEGER,
+                datetime TEXT,
+                hours INTEGER,
+                minutes INTEGER,
+                isactive INTEGER DEFAULT 1,
+                FOREIGN KEY(machine_id) REFERENCES Machines(id)
             )
         ''')
 
@@ -71,3 +87,21 @@ class DatabaseManager:
             print(f"Error inserting dummy user: {e}")
         finally:
             conn.close()
+
+    def load_machines(self):
+        conn = sqlite3.connect(self.db_name)
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, name FROM Machines')
+        machines = cursor.fetchall()
+        conn.close()
+        return machines
+
+    def insert_project(self, quote_number, machine, date_time, hours, minutes):
+        conn = sqlite3.connect(self.db_name)
+        cursor = conn.cursor()
+        cursor.execute('SELECT id FROM Machines WHERE name = ?', (machine,))
+        machine_id = cursor.fetchone()[0]
+        cursor.execute('INSERT INTO Projects (quote_number, machine_id, datetime, hours, minutes) VALUES (?, ?, ?, ?, ?)',
+                       (quote_number, machine_id, date_time, hours, minutes))
+        conn.commit()
+        conn.close()
