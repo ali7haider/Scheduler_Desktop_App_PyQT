@@ -207,7 +207,7 @@ color: rgb(255, 255, 255);
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit">
+              <widget class="QLineEdit" name="txtMail">
                <property name="minimumSize">
                 <size>
                  <width>250</width>
@@ -263,7 +263,7 @@ color: rgb(255, 255, 255);
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEdit_2">
+              <widget class="QLineEdit" name="txtPassword">
                <property name="minimumSize">
                 <size>
                  <width>250</width>
@@ -294,7 +294,7 @@ color: rgb(255, 255, 255);
               <number>50</number>
              </property>
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="btnRegister">
                <property name="minimumSize">
                 <size>
                  <width>150</width>
@@ -310,7 +310,7 @@ color: rgb(255, 255, 255);
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="btnOK">
                <property name="minimumSize">
                 <size>
                  <width>110</width>
