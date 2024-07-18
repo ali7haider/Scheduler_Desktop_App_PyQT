@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>798</width>
-    <height>590</height>
+    <width>788</width>
+    <height>636</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,6 +20,7 @@ background-color: #4C4C4C;
 QLabel {
 color: rgb(255, 255, 255);
 	font: 9pt &quot;Arial&quot;;
+
 }
 
 #loginFrame
@@ -83,7 +84,7 @@ color: rgb(255, 255, 255);
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>40</height>
+           <height>30</height>
           </size>
          </property>
         </spacer>
@@ -92,12 +93,24 @@ color: rgb(255, 255, 255);
         <widget class="QLabel" name="label">
          <property name="minimumSize">
           <size>
-           <width>300</width>
+           <width>200</width>
            <height>0</height>
           </size>
          </property>
+         <property name="maximumSize">
+          <size>
+           <width>220</width>
+           <height>80</height>
+          </size>
+         </property>
          <property name="text">
-          <string>Baed</string>
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="resources.qrc">:/images/images/logo2.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -149,7 +162,7 @@ color: rgb(255, 255, 255);
                 <string notr="true">font: bold 12pt &quot;Arial&quot;;</string>
                </property>
                <property name="text">
-                <string>Connexian</string>
+                <string>Connexion</string>
                </property>
               </widget>
              </item>
@@ -189,7 +202,7 @@ color: rgb(255, 255, 255);
                 <string notr="true">font: bold 11pt &quot;Arial&quot;;</string>
                </property>
                <property name="text">
-                <string>Addresse mail:</string>
+                <string>Adresse mail:</string>
                </property>
               </widget>
              </item>
@@ -292,7 +305,7 @@ color: rgb(255, 255, 255);
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="text">
-                <string>Carrer un compte</string>
+                <string>Créer un compte</string>
                </property>
               </widget>
              </item>
@@ -336,6 +349,8 @@ color: rgb(255, 255, 255);
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
