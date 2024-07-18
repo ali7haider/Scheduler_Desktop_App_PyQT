@@ -206,7 +206,7 @@ border-radius:15px;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btnAddProject">
+                  <widget class="QPushButton" name="btnProject">
                    <property name="minimumSize">
                     <size>
                      <width>110</width>
@@ -234,7 +234,7 @@ border-radius:15px;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btnAddMachine">
+                  <widget class="QPushButton" name="btnMachine">
                    <property name="minimumSize">
                     <size>
                      <width>110</width>
@@ -359,7 +359,7 @@ border-radius:15px;</string>
                  <string notr="true">background-color:#4C4C4C;</string>
                 </property>
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="page_3">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -413,7 +413,8 @@ color: rgb(255, 255, 255);
                         <enum>QFrame::Raised</enum>
                        </property>
                        <property name="plainText">
-                        <string>No Calendar till now</string>
+                        <string>No Calendar till now
+</string>
                        </property>
                       </widget>
                      </item>
@@ -614,7 +615,7 @@ border-radius:15px;</string>
                          </widget>
                         </item>
                         <item row="0" column="1">
-                         <widget class="QLineEdit" name="lineEdit_5">
+                         <widget class="QLineEdit" name="txtQuoteNumber">
                           <property name="minimumSize">
                            <size>
                             <width>270</width>
@@ -673,7 +674,20 @@ padding:3px;
                             </widget>
                            </item>
                            <item>
-                            <widget class="QLineEdit" name="lineEdit_9">
+                            <widget class="QDateTimeEdit" name="dateTimeTemps">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>28</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color:white;</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QLineEdit" name="txtHours">
                              <property name="minimumSize">
                               <size>
                                <width>70</width>
@@ -718,7 +732,7 @@ color:black;</string>
                             </widget>
                            </item>
                            <item>
-                            <widget class="QLineEdit" name="lineEdit_8">
+                            <widget class="QLineEdit" name="txtMinutes">
                              <property name="minimumSize">
                               <size>
                                <width>70</width>
@@ -766,7 +780,7 @@ color:black;</string>
                          </widget>
                         </item>
                         <item row="1" column="1">
-                         <widget class="QComboBox" name="comboBox_2">
+                         <widget class="QComboBox" name="cmbxMachines">
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
@@ -827,7 +841,7 @@ padding:3px;
                          <number>50</number>
                         </property>
                         <item>
-                         <widget class="QPushButton" name="pushButton_5">
+                         <widget class="QPushButton" name="btnAddProject">
                           <property name="minimumSize">
                            <size>
                             <width>120</width>
@@ -977,7 +991,7 @@ border-radius:15px;</string>
                          <number>10</number>
                         </property>
                         <item row="0" column="1">
-                         <widget class="QLineEdit" name="lineEdit_3">
+                         <widget class="QLineEdit" name="txtMachineName">
                           <property name="minimumSize">
                            <size>
                             <width>270</width>
@@ -1043,7 +1057,7 @@ padding:3px;
                          </widget>
                         </item>
                         <item row="1" column="1">
-                         <widget class="QComboBox" name="comboBox">
+                         <widget class="QComboBox" name="cmbxTechnology">
                           <property name="minimumSize">
                            <size>
                             <width>0</width>
@@ -1104,7 +1118,7 @@ padding:3px;
                          <number>50</number>
                         </property>
                         <item>
-                         <widget class="QPushButton" name="pushButton_4">
+                         <widget class="QPushButton" name="btnAddMachine">
                           <property name="minimumSize">
                            <size>
                             <width>120</width>

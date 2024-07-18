@@ -13,17 +13,17 @@ class LoginWindow(QMainWindow, Ui_MainWindow):
         self.db_manager = DatabaseManager()
         self.db_manager.create_database()
         # self.insert_dummy_data()  # Insert dummy data
+        # Set the stylesheet for the btnOK button
+        
         self.btnOK.clicked.connect(self.loginAuthentication)
 
-        # Set QPushButton text color to black
-        self.set_button_styles()
+
 
     def insert_dummy_data(self):
         self.db_manager.insert_dummy_user('user1@example.com', 'password1')
         self.db_manager.insert_dummy_user('user2@example.com', 'password2')
 
-    def set_button_styles(self):
-        self.btnOK.setStyleSheet("QPushButton {color: black;}")
+  
 
     def loginAuthentication(self):
         mail = self.txtMail.text()
