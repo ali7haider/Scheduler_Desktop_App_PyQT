@@ -12,6 +12,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.user = user
         self.db_manager = db_manager
+        self.stackedWidget_2.setCurrentIndex(0)
 
         self.btnCalendar.clicked.connect(lambda: self.change_page(0))
         self.btnProject.clicked.connect(lambda: self.change_page(1))
