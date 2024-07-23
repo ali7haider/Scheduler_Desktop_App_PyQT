@@ -56,6 +56,22 @@ class DatabaseManager:
         conn.commit()
         conn.close()
 
+    def fetch_active_projects(self):
+        conn = sqlite3.connect(self.db_name)
+        cursor = conn.cursor()
+
+        cursor.execute('''
+            SELECT p.id, p.quote_number, p.datetime, m.name AS machine_name, s.name AS subject_name, p.hours, p.minutes
+            FROM Projects p
+            JOIN Machines m ON p.machine_id = m.id
+            JOIN Subjects s ON p.subject_id = s.id
+            WHERE p.isactive = 1
+        ''')
+
+        projects = cursor.fetchall()
+        conn.close()
+
+        return projects
     def insert_dummy_user(self, mail, password):
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()

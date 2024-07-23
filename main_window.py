@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox, QTableWidget
 from PyQt5.QtCore import pyqtSignal, QDateTime
 from main_ui import Ui_MainWindow
 from database import DatabaseManager
+from datetime import datetime, timedelta
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     logout_signal = pyqtSignal()  # Define a signal for logout
@@ -13,7 +15,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.user = user
         self.db_manager = db_manager
         self.stackedWidget_2.setCurrentIndex(0)
+        # Load machines into combo box
+        self.load_machines()
 
+        self.load_subject()
+
+        # Load active projects on initialization
+        self.load_active_projects()
         self.btnCalendar.clicked.connect(lambda: self.change_page(0))
         self.btnProject.clicked.connect(lambda: self.change_page(1))
         self.btnMachine.clicked.connect(lambda: self.change_page(2))
@@ -22,6 +30,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.btnLogout.clicked.connect(self.logout)
 
         self.btnAddMachine.clicked.connect(self.add_machine)
+        self.btnCalendar.clicked.connect(self.load_active_projects)
+
         self.btnAddSubject.clicked.connect(self.add_subject)
 
         self.btnAddProject.clicked.connect(self.add_project)
@@ -29,10 +39,38 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Set current date and time for dateTimeTemps
         self.dateTimeTemps.setDateTime(QDateTime.currentDateTime())
 
-        # Load machines into combo box
-        self.load_machines()
+        
 
-        self.load_subject()
+    def load_active_projects(self):
+        try:
+            projects = self.db_manager.fetch_active_projects()
+
+            if projects:
+                # Create HTML to display the list of projects
+                html_content = "<h2>Active Projects</h2><ul style='padding-left: 20px;'>"
+
+                for project in projects:
+                    project_id, quote_number, date_time, machine_name, subject_name, hours, minutes = project
+                    start_time = datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
+                    end_time = start_time + timedelta(hours=hours, minutes=minutes)
+                    
+                    html_content += f"""
+                    <li style='margin-bottom: 20px;'>
+                        <strong>Quote Number:</strong> {quote_number}<br>
+                        <strong>Start Time:</strong> {start_time.strftime("%Y-%m-%d %H:%M:%S")}<br>
+                        <strong>End Time:</strong> {end_time.strftime("%Y-%m-%d %H:%M:%S")}<br>
+                        <strong>Machine:</strong> {machine_name}<br>
+                        <strong>Subject:</strong> {subject_name}<br>
+                        <strong>Duration:</strong> {hours} hours {minutes} minutes
+                    </li>
+                    """
+
+                html_content += "</ul>"
+                self.txtCalendar.setHtml(html_content)  # Ensure txtCalendar is a QTextEdit
+            else:
+                self.txtCalendar.setHtml("<p>No active projects found.</p>")
+        except Exception as e:
+            print(f"An error occurred while loading active projects: {e}")
 
 
     def change_page(self, index):

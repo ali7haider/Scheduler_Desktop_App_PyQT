@@ -172,14 +172,12 @@ class Ui_MainWindow(object):
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_4.setObjectName("frame_4")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.frame_4)
-        self.verticalLayout_9.setContentsMargins(30, 40, 30, 0)
+        self.verticalLayout_9.setContentsMargins(20, 30, 20, 0)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.txtCalendar = QtWidgets.QPlainTextEdit(self.frame_4)
+        self.txtCalendar = QtWidgets.QTextEdit(self.frame_4)
         self.txtCalendar.setStyleSheet("border:none;\n"
 "color: rgb(255, 255, 255);\n"
 "    font: bold 11pt \"Arial\";")
-        self.txtCalendar.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.txtCalendar.setFrameShadow(QtWidgets.QFrame.Raised)
         self.txtCalendar.setObjectName("txtCalendar")
         self.verticalLayout_9.addWidget(self.txtCalendar)
         self.verticalLayout_7.addWidget(self.frame_4)
@@ -565,7 +563,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_2.setCurrentIndex(3)
+        self.stackedWidget_2.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -575,8 +573,6 @@ class Ui_MainWindow(object):
         self.btnProject.setText(_translate("MainWindow", "Ajouter un projet"))
         self.btnMachine.setText(_translate("MainWindow", "Ajouter une machine"))
         self.btnSubject.setText(_translate("MainWindow", "Ajouter une matière"))
-        self.txtCalendar.setPlainText(_translate("MainWindow", "No Calendar till now\n"
-""))
         self.btnVisual.setText(_translate("MainWindow", "See Visual graph"))
         self.label_8.setText(_translate("MainWindow", "Ajouter un nouveau projet"))
         self.label_11.setText(_translate("MainWindow", "Temps machine:"))
