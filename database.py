@@ -27,6 +27,14 @@ class DatabaseManager:
                 technology TEXT
             )
         ''')
+        # Create the Machines table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS Subjects (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT
+            )
+        ''')
+
 
         # Create the Projects table
         cursor.execute('''
@@ -34,11 +42,14 @@ class DatabaseManager:
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 quote_number TEXT,
                 machine_id INTEGER,
+                subject_id INTEGER,
                 datetime TEXT,
                 hours INTEGER,
                 minutes INTEGER,
                 isactive INTEGER DEFAULT 1,
                 FOREIGN KEY(machine_id) REFERENCES Machines(id)
+                FOREIGN KEY(subject_id) REFERENCES Subjects(id)
+
             )
         ''')
 
@@ -55,6 +66,15 @@ class DatabaseManager:
             conn.commit()
         except sqlite3.IntegrityError:
             pass
+        conn.close()
+
+    def insert_subject(self, name):
+        conn = sqlite3.connect(self.db_name)
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO Subjects (name) VALUES (?)
+        ''', (name,))  # Note the comma to create a tuple
+        conn.commit()
         conn.close()
 
     def insert_machine(self, name, technology):
@@ -95,13 +115,29 @@ class DatabaseManager:
         machines = cursor.fetchall()
         conn.close()
         return machines
-
-    def insert_project(self, quote_number, machine, date_time, hours, minutes):
+    def load_subjects(self):
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
+        cursor.execute('SELECT id, name FROM Subjects')
+        machines = cursor.fetchall()
+        conn.close()
+        return machines
+
+    def insert_project(self, quote_number, machine, subject, date_time, hours, minutes):
+        conn = sqlite3.connect(self.db_name)
+        cursor = conn.cursor()
+
+        # Get machine_id
         cursor.execute('SELECT id FROM Machines WHERE name = ?', (machine,))
         machine_id = cursor.fetchone()[0]
-        cursor.execute('INSERT INTO Projects (quote_number, machine_id, datetime, hours, minutes) VALUES (?, ?, ?, ?, ?)',
-                       (quote_number, machine_id, date_time, hours, minutes))
+
+        # Get subject_id
+        cursor.execute('SELECT id FROM Subjects WHERE name = ?', (subject,))
+        subject_id = cursor.fetchone()[0]
+
+        # Insert project
+        cursor.execute('INSERT INTO Projects (quote_number, machine_id, subject_id, datetime, hours, minutes) VALUES (?, ?, ?, ?, ?, ?)',
+                    (quote_number, machine_id, subject_id, date_time, hours, minutes))
         conn.commit()
         conn.close()
+
