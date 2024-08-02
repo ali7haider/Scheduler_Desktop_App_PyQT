@@ -127,6 +127,7 @@ class Ui_MainWindow(object):
         self.txtPassword = QtWidgets.QLineEdit(self.frame_2)
         self.txtPassword.setMinimumSize(QtCore.QSize(250, 28))
         self.txtPassword.setMaximumSize(QtCore.QSize(220, 16777215))
+        self.txtPassword.setEchoMode(QtWidgets.QLineEdit.Password)
         self.txtPassword.setObjectName("txtPassword")
         self.horizontalLayout_2.addWidget(self.txtPassword)
         self.verticalLayout_4.addWidget(self.frame_2, 0, QtCore.Qt.AlignLeft)

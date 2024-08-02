@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime, timedelta
 
 class DatabaseManager:
     def __init__(self, db_name='DB.db'):
@@ -56,6 +57,7 @@ class DatabaseManager:
         conn.commit()
         conn.close()
 
+
     def fetch_active_projects(self):
         conn = sqlite3.connect(self.db_name)
         cursor = conn.cursor()
@@ -71,18 +73,17 @@ class DatabaseManager:
         projects = cursor.fetchall()
         conn.close()
 
-        return projects
-    def insert_dummy_user(self, mail, password):
-        conn = sqlite3.connect(self.db_name)
-        cursor = conn.cursor()
-        try:
-            cursor.execute('''
-                INSERT INTO Users (mail, password, isactive) VALUES (?, ?, ?)
-            ''', (mail, password, 1))
-            conn.commit()
-        except sqlite3.IntegrityError:
-            pass
-        conn.close()
+        # Filter projects based on the calculated end time
+        filtered_projects = []
+        for project in projects:
+            project_id, quote_number, date_time, machine_name, subject_name, hours, minutes = project
+            start_time = datetime.strptime(date_time, "%Y-%m-%d %H:%M:%S")
+            end_time = start_time + timedelta(hours=hours, minutes=minutes)
+            if end_time > datetime.now():
+                filtered_projects.append(project)
+
+        return filtered_projects
+
 
     def insert_subject(self, name):
         conn = sqlite3.connect(self.db_name)
@@ -157,3 +158,15 @@ class DatabaseManager:
         conn.commit()
         conn.close()
 
+    def mark_project_inactive(self, project_id):
+            conn = sqlite3.connect(self.db_name)
+            cursor = conn.cursor()
+            
+            cursor.execute('''
+                UPDATE Projects
+                SET isactive = 0
+                WHERE id = ?
+            ''', (project_id,))
+            
+            conn.commit()
+            conn.close()

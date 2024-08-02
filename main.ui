@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1110</width>
-    <height>795</height>
+    <width>1127</width>
+    <height>816</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -381,13 +381,25 @@ border-radius:15px;</string>
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
+              <property name="leftMargin">
+               <number>9</number>
+              </property>
+              <property name="topMargin">
+               <number>9</number>
+              </property>
+              <property name="rightMargin">
+               <number>9</number>
+              </property>
+              <property name="bottomMargin">
+               <number>9</number>
+              </property>
               <item>
                <widget class="QStackedWidget" name="stackedWidget_2">
                 <property name="styleSheet">
                  <string notr="true">background-color:#4C4C4C;</string>
                 </property>
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="page_3">
                  <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -495,22 +507,9 @@ color: rgb(255, 255, 255);
                 </widget>
                 <widget class="QWidget" name="page_4">
                  <layout class="QVBoxLayout" name="verticalLayout_10">
-                  <item>
-                   <spacer name="verticalSpacer_3">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeType">
-                     <enum>QSizePolicy::Fixed</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>100</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
+                  <property name="spacing">
+                   <number>10</number>
+                  </property>
                   <item>
                    <widget class="QFrame" name="projectFrame">
                     <property name="minimumSize">
@@ -907,20 +906,26 @@ color: rgb(255, 255, 255);
                    </widget>
                   </item>
                   <item>
-                   <spacer name="verticalSpacer_2">
-                    <property name="orientation">
-                     <enum>Qt::Vertical</enum>
+                   <widget class="QTableWidget" name="tableProject">
+                    <property name="styleSheet">
+                     <string notr="true">background-color: #7A8A8A;
+border-radius:7px;
+color:white;
+</string>
                     </property>
-                    <property name="sizeType">
-                     <enum>QSizePolicy::Fixed</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>20</width>
-                      <height>100</height>
-                     </size>
-                    </property>
-                   </spacer>
+                    <attribute name="horizontalHeaderMinimumSectionSize">
+                     <number>70</number>
+                    </attribute>
+                    <attribute name="verticalHeaderDefaultSectionSize">
+                     <number>0</number>
+                    </attribute>
+                    <attribute name="verticalHeaderHighlightSections">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="verticalHeaderMinimumSectionSize">
+                     <number>0</number>
+                    </attribute>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -1384,6 +1389,57 @@ color: rgb(255, 255, 255);
                   </item>
                  </layout>
                 </widget>
+                <widget class="QWidget" name="page_7">
+                 <layout class="QVBoxLayout" name="verticalLayout_11">
+                  <item>
+                   <widget class="QLabel" name="lblMonth">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>30</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Arial</family>
+                      <pointsize>-1</pointsize>
+                      <weight>50</weight>
+                      <italic>false</italic>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0);
+font-size: 20px;
+border-radius: 10px;</string>
+                    </property>
+                    <property name="text">
+                     <string>July</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame_7">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </widget>
               </item>
              </layout>
@@ -1460,6 +1516,7 @@ color: rgb(255, 255, 255);
   </widget>
  </widget>
  <resources>
+  <include location="resources.qrc"/>
   <include location="resources.qrc"/>
  </resources>
  <connections/>

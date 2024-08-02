@@ -12,7 +12,7 @@ class LoginWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.db_manager = DatabaseManager()
         self.db_manager.create_tables()
-        self.db_manager.insert_dummy_user("Admin","1234")  # Insert dummy data
+        # self.db_manager.insert_dummy_user("Admin","1234")  # Insert dummy data
         # Set the stylesheet for the btnOK button
         
         self.btnOK.clicked.connect(self.loginAuthentication)

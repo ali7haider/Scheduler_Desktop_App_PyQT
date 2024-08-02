@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1110, 795)
+        MainWindow.resize(1127, 816)
         MainWindow.setStyleSheet("#bg{\n"
 "background-color: #4C4C4C;\n"
 "}\n"
@@ -157,6 +157,7 @@ class Ui_MainWindow(object):
         self.mainFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.mainFrame.setObjectName("mainFrame")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.mainFrame)
+        self.verticalLayout_2.setContentsMargins(9, 9, 9, 9)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.stackedWidget_2 = QtWidgets.QStackedWidget(self.mainFrame)
         self.stackedWidget_2.setStyleSheet("background-color:#4C4C4C;")
@@ -203,9 +204,8 @@ class Ui_MainWindow(object):
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.page_4)
+        self.verticalLayout_10.setSpacing(10)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
-        spacerItem1 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_10.addItem(spacerItem1)
         self.projectFrame = QtWidgets.QFrame(self.page_4)
         self.projectFrame.setMinimumSize(QtCore.QSize(520, 270))
         self.projectFrame.setMaximumSize(QtCore.QSize(16777215, 400))
@@ -355,15 +355,26 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.addWidget(self.btnAddProject)
         self.verticalLayout_15.addWidget(self.frame_15, 0, QtCore.Qt.AlignRight)
         self.verticalLayout_10.addWidget(self.projectFrame)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_10.addItem(spacerItem2)
+        self.tableProject = QtWidgets.QTableWidget(self.page_4)
+        self.tableProject.setStyleSheet("background-color: #7A8A8A;\n"
+"border-radius:7px;\n"
+"color:white;\n"
+"")
+        self.tableProject.setObjectName("tableProject")
+        self.tableProject.setColumnCount(0)
+        self.tableProject.setRowCount(0)
+        self.tableProject.horizontalHeader().setMinimumSectionSize(70)
+        self.tableProject.verticalHeader().setDefaultSectionSize(0)
+        self.tableProject.verticalHeader().setHighlightSections(False)
+        self.tableProject.verticalHeader().setMinimumSectionSize(0)
+        self.verticalLayout_10.addWidget(self.tableProject)
         self.stackedWidget_2.addWidget(self.page_4)
         self.page_5 = QtWidgets.QWidget()
         self.page_5.setObjectName("page_5")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.page_5)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
-        spacerItem3 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_14.addItem(spacerItem3)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_14.addItem(spacerItem1)
         self.machineFrame = QtWidgets.QFrame(self.page_5)
         self.machineFrame.setMinimumSize(QtCore.QSize(520, 270))
         self.machineFrame.setMaximumSize(QtCore.QSize(16777215, 400))
@@ -454,8 +465,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.btnAddMachine)
         self.verticalLayout_12.addWidget(self.frame_13, 0, QtCore.Qt.AlignRight)
         self.verticalLayout_14.addWidget(self.machineFrame)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_14.addItem(spacerItem4)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_14.addItem(spacerItem2)
         self.stackedWidget_2.addWidget(self.page_5)
         self.page_6 = QtWidgets.QWidget()
         self.page_6.setObjectName("page_6")
@@ -532,6 +543,33 @@ class Ui_MainWindow(object):
         self.verticalLayout_17.addWidget(self.frame_18, 0, QtCore.Qt.AlignRight)
         self.horizontalLayout_3.addWidget(self.suvjectFrame)
         self.stackedWidget_2.addWidget(self.page_6)
+        self.page_7 = QtWidgets.QWidget()
+        self.page_7.setObjectName("page_7")
+        self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.page_7)
+        self.verticalLayout_11.setObjectName("verticalLayout_11")
+        self.lblMonth = QtWidgets.QLabel(self.page_7)
+        self.lblMonth.setMinimumSize(QtCore.QSize(0, 30))
+        self.lblMonth.setMaximumSize(QtCore.QSize(16777215, 30))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(-1)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.lblMonth.setFont(font)
+        self.lblMonth.setStyleSheet("color: rgb(255, 255, 255);\n"
+"background-color: rgb(0, 0, 0);\n"
+"font-size: 20px;\n"
+"border-radius: 10px;")
+        self.lblMonth.setAlignment(QtCore.Qt.AlignCenter)
+        self.lblMonth.setObjectName("lblMonth")
+        self.verticalLayout_11.addWidget(self.lblMonth)
+        self.frame_7 = QtWidgets.QFrame(self.page_7)
+        self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_7.setObjectName("frame_7")
+        self.verticalLayout_11.addWidget(self.frame_7)
+        self.stackedWidget_2.addWidget(self.page_7)
         self.verticalLayout_2.addWidget(self.stackedWidget_2)
         self.gridLayout.addWidget(self.mainFrame, 1, 1, 2, 1)
         self.frame_3 = QtWidgets.QFrame(self.frame)
@@ -563,7 +601,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_2.setCurrentIndex(0)
+        self.stackedWidget_2.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -594,6 +632,7 @@ class Ui_MainWindow(object):
         self.label_14.setText(_translate("MainWindow", "Ajouter une matière"))
         self.label_15.setText(_translate("MainWindow", "Matière:"))
         self.btnAddSubject.setText(_translate("MainWindow", "AJOUTER "))
+        self.lblMonth.setText(_translate("MainWindow", "July"))
         self.btnLogout.setText(_translate("MainWindow", "Se déconnecter"))
 import resources_rc
 
