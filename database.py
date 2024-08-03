@@ -114,16 +114,19 @@ class DatabaseManager:
         return user
 
 
-    def insert_dummy_user(self, mail, password):
+    def insert_user(self, mail, password):
         try:
             conn = sqlite3.connect(self.db_name)
             cursor = conn.cursor()
             cursor.execute('INSERT INTO Users (mail, password, isactive) VALUES (?, ?, ?)', (mail, password, 1))
             conn.commit()
+            return True
         except sqlite3.IntegrityError as e:
-            print(f"Error inserting dummy user: {e}")
+            print(f"Error inserting user: {e}")
+            return False
         finally:
             conn.close()
+
 
     def load_machines(self):
         conn = sqlite3.connect(self.db_name)

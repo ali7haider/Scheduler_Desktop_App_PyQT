@@ -6,6 +6,7 @@ from main_ui import Ui_MainWindow
 from database import DatabaseManager
 from datetime import datetime, timedelta
 import sip
+from PyQt5.QtGui import  QMouseEvent
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     logout_signal = pyqtSignal()  # Define a signal for logout
@@ -13,6 +14,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, user, db_manager):
         super(MainWindow, self).__init__()
         self.setupUi(self)
+        self.setWindowFlags(Qt.FramelessWindowHint)
+
+        # Connect the closeAppBtn button to the close method
+        self.closeAppBtn.clicked.connect(self.close)
+
+        # Connect the minimizeAppBtn button to the showMinimized method
+        self.minimizeAppBtn.clicked.connect(self.showMinimized)
+
+        self.maximizeAppBtn.clicked.connect(self.maximize_window)
+
         self.user = user
         self.db_manager = db_manager
         self.stackedWidget_2.setCurrentIndex(0)
@@ -416,7 +427,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         msg_box.setIcon(icon)
         msg_box.setStyleSheet("QLabel{color: black;}QPushButton{color: black;border:1px solid black;}")  # Set text color to black
         msg_box.exec_()
+    def maximize_window(self):
+        # If the window is already maximized, restore it
+        if self.isMaximized():
+            self.showNormal()
+        # Otherwise, maximize it
+        else:
+            self.showMaximized()
+    # Define the mousePressEvent method to handle mouse button press events
+    def mousePressEvent(self, event: QMouseEvent) -> None:
+        if event.button() == Qt.LeftButton:
+            self.dragPos = event.globalPos() - self.pos()
+            event.accept()
 
+    def mouseMoveEvent(self, event: QMouseEvent) -> None:
+        if event.buttons() == Qt.LeftButton:
+            self.move(event.globalPos() - self.dragPos)
+            event.accept()
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     user = None  # Dummy user for testing
